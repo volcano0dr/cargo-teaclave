@@ -1,0 +1,20 @@
+[package]
+name = "cargo-teaclave"
+version = "0.1.0"
+authors = ["The Teaclave Authors"]
+edition = "2018"
+build = "build.rs"
+
+[dependencies]
+cc = "1.0"
+cargo_metadata = "0.10.0"
+structopt = "0.3"
+anyhow = "1.0"
+serde = { version = "1.0.92", features = ["derive"] }
+sgx_types = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk.git", tag = "v1.1.2" }
+sgx_urts = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk.git", tag = "v1.1.2", features = ["global_init", "signal"] }
+sgx_edl = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk.git", tag = "v1.1.2" }
+
+[build-dependencies]
+cc = "1.0"
+anyhow = "1.0"

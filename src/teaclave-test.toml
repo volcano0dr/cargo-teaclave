@@ -1,0 +1,22 @@
+[package]
+name = "run-tests-enclave"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+name = "run_tests_enclave"
+crate-type = ["staticlib"]
+
+[features]
+default = []
+backtrace = []
+
+[dependencies.wheel]
+package = "test_package_name"
+path = "../"
+features = ["enclave_unit_test"]
+
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk.git", tag = "v1.1.2", features = ["backtrace"] }
+sgx_signal = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk.git", tag = "v1.1.2" }
+sgx_edl = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk.git", tag = "v1.1.2" }
